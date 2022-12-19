@@ -1,9 +1,10 @@
-import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
-const CategoryGridTile = ({ title, color, onPress }) => {
+import { Pressable, View, Text, StyleSheet, Platform } from 'react-native';
+
+function CategoryGridTile({ title, color, onPress }) {
   return (
     <View style={styles.gridItem}>
       <Pressable
-        android_ripple={{ color: "#ccc" }}
+        android_ripple={{ color: '#ccc' }}
         style={({ pressed }) => [
           styles.button,
           pressed ? styles.buttonPressed : null,
@@ -16,7 +17,8 @@ const CategoryGridTile = ({ title, color, onPress }) => {
       </Pressable>
     </View>
   );
-};
+}
+
 export default CategoryGridTile;
 
 const styles = StyleSheet.create({
@@ -26,12 +28,12 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 8,
     elevation: 4,
-    backgroundColor: "white",
-    shadowColor: "black",
+    backgroundColor: 'white',
+    shadowColor: 'black',
     shadowOpacity: 0.25,
-    shadowRadius: 8,
     shadowOffset: { width: 0, height: 2 },
-    overflow: Platform.OS === "android" ? "hidden" : "visible", //Makes sure that ripple effect does not goes beyond the border in Android.
+    shadowRadius: 8,
+    overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
   },
   button: {
     flex: 1,
@@ -41,13 +43,13 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    paddin: 16,
-    justifyContent: "center",
-    alignItems: "center",
+    padding: 16,
     borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 18,
   },
 });

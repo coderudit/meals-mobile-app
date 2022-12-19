@@ -1,22 +1,25 @@
-import { CATEGORIES } from "../data/dummy-data";
-import { FlatList } from "react-native";
-import CategoryGridTile from "../components/CategoryGridTile";
+import { FlatList } from 'react-native';
+import CategoryGridTile from '../components/CategoryGridTile';
 
-const CategoriesScreen = ({ navigation }) => {
-  //Should not be re-evaluated on component reload but to get hold of navigation property.
+import { CATEGORIES } from '../data/dummy-data';
 
-  const renderCategoryItem = (itemData) => {
-    const onPressHandler = () => {
-      navigation.navigate("MealsOverview", { categoryId: itemData.item.id });
-    };
+function CategoriesScreen({ navigation }) {
+  function renderCategoryItem(itemData) {
+    function pressHandler() {
+      navigation.navigate('MealsOverview', {
+        categoryId: itemData.item.id,
+      });
+    }
+
     return (
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
-        onPress={onPressHandler}
+        onPress={pressHandler}
       />
     );
-  };
+  }
+
   return (
     <FlatList
       data={CATEGORIES}
@@ -25,6 +28,6 @@ const CategoriesScreen = ({ navigation }) => {
       numColumns={2}
     />
   );
-};
+}
 
 export default CategoriesScreen;

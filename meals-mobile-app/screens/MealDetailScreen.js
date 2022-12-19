@@ -1,24 +1,21 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  ScrollView,
-  Button,
-} from "react-native";
-import { MEALS } from "../data/dummy-data";
-import MealDetails from "../components/MealDetails";
-import Subtitle from "../components/MealDetail/Subtitle";
-import List from "../components/MealDetail/List";
-import IconButton from "../components/IconButton";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
-const MealDetailScreen = ({ route, navigation }) => {
+import IconButton from '../components/IconButton';
+import List from '../components/MealDetail/List';
+import Subtitle from '../components/MealDetail/Subtitle';
+import MealDetails from '../components/MealDetails';
+import { MEALS } from '../data/dummy-data';
+
+function MealDetailScreen({ route, navigation }) {
   const mealId = route.params.mealId;
-  console.log(route.params.mealId);
+
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  const headerButtonPressHandler = () => {};
+  function headerButtonPressHandler() {
+    console.log('Pressed!');
+  }
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
@@ -41,7 +38,6 @@ const MealDetailScreen = ({ route, navigation }) => {
         duration={selectedMeal.duration}
         complexity={selectedMeal.complexity}
         affordability={selectedMeal.affordability}
-        style={styles.subtitle}
         textStyle={styles.detailText}
       />
       <View style={styles.listOuterContainer}>
@@ -54,7 +50,7 @@ const MealDetailScreen = ({ route, navigation }) => {
       </View>
     </ScrollView>
   );
-};
+}
 
 export default MealDetailScreen;
 
@@ -63,23 +59,23 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   image: {
-    width: "100%",
+    width: '100%',
     height: 350,
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 24,
     margin: 8,
-    textAlign: "center",
-    color: "white",
+    textAlign: 'center',
+    color: 'white',
   },
   detailText: {
-    color: "white",
-  },
-  listContainer: {
-    width: "80%",
+    color: 'white',
   },
   listOuterContainer: {
-    alignItems: "center",
+    alignItems: 'center',
+  },
+  listContainer: {
+    width: '80%',
   },
 });

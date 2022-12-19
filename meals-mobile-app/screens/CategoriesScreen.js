@@ -7,7 +7,7 @@ const CategoriesScreen = ({ navigation }) => {
 
   const renderCategoryItem = (itemData) => {
     const onPressHandler = () => {
-      navigation.navigate("MealsOverview");
+      navigation.navigate("MealsOverview", { categoryId: itemData.item.id });
     };
     return (
       <CategoryGridTile
